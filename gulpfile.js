@@ -1,4 +1,3 @@
-//$ npm install gulp-sass --save-dev
 var gulp = require('gulp');
 // Requires the gulp-sass plugin
 var sass = require('gulp-sass');
@@ -14,43 +13,16 @@ var babel = require('gulp-babel');
 //Otimiza Imgs 
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache'); 
+//Deleta arquivos
+var del = require('del');
+//Definição de processos 
+var runSequence = require('run-sequence');
 
 
 //Otimiza IMG da pasta IMAGENS
-gulp.task('imagenstemplate', function(){
-  return gulp.src('./app/assets/imagens/template/*.+(png|jpg|jpeg|gif|svg)')
-  // Caching images that ran through imagemin
-  .pipe(cache(imagemin({
-    interlaced: true
-  })))
-  .pipe(gulp.dest('./dist/app/assets/imagens/template/'))
-}); 
-
-gulp.task('imagensjqueryui', function(){
-  return gulp.src('./app/assets/imagens/jquery-ui/*.+(png|jpg|jpeg|gif|svg)')
-  // Caching images that ran through imagemin
-  .pipe(cache(imagemin({
-    interlaced: true
-  })))
-  .pipe(gulp.dest('./dist/app/assets/imagens/jquery-ui/'))
-}); 
-
-gulp.task('imagensanuncios', function(){
-  return gulp.src('./app/assets/imagens/anuncios/*.+(png|jpg|jpeg|gif|svg)')
-  // Caching images that ran through imagemin
-  .pipe(cache(imagemin({
-    interlaced: true
-  })))
-  .pipe(gulp.dest('./dist/app/assets/imagens/anuncios/'))
-}); 
-
-// Otimiza todas as pastas do IMG
-gulp.task('otimizeimg', ['imagensanuncios', 'imagensjqueryui','imagenstemplate']);
-//Fim Otimização de IMG
-
 gulp.task('images', function(){
-  return gulp.src('./app/assets/imagens/*.+(png|jpg|jpeg|gif|svg)')
-  // Caching images that ran through imagemin
+  return gulp.src('./app/assets/imagens/**/*.+(png|jpg|jpeg|gif|svg)')
+  // Cache de imagens que foram executadas através de imagemin
   .pipe(cache(imagemin({
     interlaced: true
   })))
@@ -70,14 +42,26 @@ gulp.task('sass', function() {
 //Otimização Arquivos CSS OU JS
 gulp.task('useref', function(){
   return gulp.src('./app/*.html')
+  // Minifica  arquivos js e ECMAScript 
   .pipe(gulpIf('*.js', babel({
     presets: ['es2015']
   }))) 
   .pipe(useref()) 
-    // Minifies only if it's a CSS file
+    // Minifica  arquivos css
     .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('./dist/app'))
   });
+
+//Copiar fonts
+gulp.task('fonts', function() {
+  return gulp.src('./app/assets/fonts/*')
+ .pipe(gulp.dest('./dist/app/assets/fonts/'))
+})
+
+//Deleta arquivos
+gulp.task('clean:dist', function() {
+  return del.sync('./dist');
+})
 
 //Rodar no navegador  
 gulp.task('browserSync', function() {
@@ -97,6 +81,17 @@ gulp.task('watch', ['browserSync', 'sass','useref'], function (){
   gulp.watch('./app/assets/js/*.js', browserSync.reload); 
 });
 
-//Tarefa padrão 
-gulp.task('default',['watch']);
+//Gerar buil do projeto
+gulp.task('build', function (callback) {
+  runSequence('clean:dist', 'sass',
+    ['images', 'fonts', 'useref'],
+    callback
+  )
+})
 
+//Tarefa padrão 
+gulp.task('default', function (callback) {
+  runSequence(['sass','browserSync', 'watch'],
+    callback
+  )
+})

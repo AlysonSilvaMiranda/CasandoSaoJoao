@@ -8,13 +8,13 @@ $color-fonte: #383838;
 $font-family-site:'Open Sans', Verdana, Geneva, sans-serif;
 
 @font-face {
-  font-family: "Open Sans";
-  src: font-files("../fonts/OpenSans-Light.woff", "../fonts/OpenSans-Light.woff2", "../fonts/OpenSans.ttf", "../fonts/OpenSans.svg", "../fonts/OpenSans-Light.eot");
+  font-family: 'Open Sans';
+  src: font-files('../fonts/OpenSans-Light.woff', '../fonts/OpenSans-Light.woff2', '../fonts/OpenSans.ttf', '../fonts/OpenSans.svg', '../fonts/OpenSans-Light.eot');
   font-weight: 300;
   font-style: normal; }
 
 html {
-  background-image: url("../imagens/template/bg-site.png");
+  background-image: url(../imagens/template/bg-site.png);
   background-repeat: repeat; }
 
 * {
@@ -131,7 +131,7 @@ legend {
   padding-bottom: 58px; }
 
 .logo {
-  background-image: url("../imagens/template/logo_casando.png");
+  background-image: url(../imagens/template/logo_casando.png);
   background-repeat: no-repeat;
   width: 255px;
   height: 99px;
@@ -176,7 +176,7 @@ legend {
       text-align: center; } }
 
 .search .bt_search {
-  background-image: url("../imagens/template/search_icon.png");
+  background-image: url(../imagens/template/search_icon.png);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #b4b4b4;
@@ -223,7 +223,7 @@ legend {
   z-index: 200;
   width: 100%;
   margin-left: -15px;
-  background-image: url("../imagens/template/bg-dtq-noivos.png"); }
+  background-image: url(../imagens/template/bg-dtq-noivos.png); }
   @media (max-width: 700px) {
     .nome_noivos {
       padding: 0;
@@ -243,7 +243,7 @@ legend {
   float: left;
   padding-right: 29px;
   margin: 0 -18px 0 18px;
-  background-image: url("../imagens/template/menu_icon.png");
+  background-image: url(../imagens/template/menu_icon.png);
   background-position: center right;
   background-repeat: no-repeat;
   color: #fff;
@@ -282,7 +282,7 @@ legend {
   z-index: 200;
   width: 100%;
   box-sizing: border-box;
-  background-image: url("../imagens/template/bg-dtq-noivos.png");
+  background-image: url(../imagens/template/bg-dtq-noivos.png);
   color: #fff;
   text-align: center; }
   @media (max-width: 700px) {
@@ -331,18 +331,18 @@ ul {
   background-position: center; }
 
 .topo_fixo a {
-  background-image: url("../imagens/template/topo_fixo.png"); }
+  background-image: url(../imagens/template/topo_fixo.png); }
 
 .topo_fixo {
   float: right; }
 
 .menubg {
   margin: -68px 0 0;
-  background-image: url("../imagens/template/bg_white.png"); }
+  background-image: url(../imagens/template/bg_white.png); }
 
 ul.menu {
   padding-top: 17px;
-  background-image: url("../imagens/template/menu_icon.png");
+  background-image: url(../imagens/template/menu_icon.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   clear: both;
@@ -417,7 +417,7 @@ ul.menu li > ul {
   display: none;
   width: auto;
   position: absolute;
-  background-image: url("../imagens/template/bg_white90.png"); }
+  background-image: url(../imagens/template/bg_white90.png); }
 
 ul.menu li > ul > li {
   display: block;
@@ -426,7 +426,7 @@ ul.menu li > ul > li {
   ul.menu li > ul > li:hover {
     background-color: $color-site; }
     ul.menu li > ul > li:hover .icon {
-      background-image: url("../imagens/template/sprit_icons_hover.png"); }
+      background-image: url(../imagens/template/sprit_icons_hover.png); }
 
 ul.menu li > ul > li > a {
   text-transform: none; }
@@ -494,7 +494,7 @@ ul.menu > li > ul.mega > li > a {
 
   .menubg {
     background-color: $color-site;
-    background-image: url("../imagens/template/nav-icon.png");
+    background-image: url(../imagens/template/nav-icon.png);
     background-repeat: no-repeat;
     background-position: center;
     height: 30px;
@@ -505,7 +505,7 @@ ul.menu > li > ul.mega > li > a {
 .icon {
   width: 100%;
   height: 25px;
-  background-image: url("../imagens/template/sprit_icons.png");
+  background-image: url(../imagens/template/sprit_icons.png);
   background-repeat: no-repeat;
   float: left; }
 
@@ -716,7 +716,7 @@ ul.menu > li > ul.mega > li > a {
   text-decoration: none;
   height: 61px;
   width: 38px;
-  background: transparent url("../imagens/template/themes.gif") no-repeat left top;
+  background: transparent url(../imagens/template/themes.gif) no-repeat left top;
   margin-top: -45px; }
   .callbacks_nav:active {
     opacity: 1; }
@@ -745,7 +745,7 @@ ul.menu > li > ul.mega > li > a {
 /*FIM banner rotativo */
 /* ---------------------------------- RODAPE */
 .divisao {
-  background-image: url("images/div_rodape.png");
+  background-image: url(images/div_rodape.png);
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
@@ -805,7 +805,7 @@ footer {
       height: 270px; } }
 
 .capa > h1 {
-  background-image: url("../imagens/template/bg-dtq-noivos.png");
+  background-image: url(../imagens/template/bg-dtq-noivos.png);
   color: #fff;
   font-size: 22px;
   position: absolute;
@@ -850,7 +850,7 @@ footer {
 
 .menu_empresa > li > a {
   font-size: 18px;
-  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", Helvetica, Verdana, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', Helvetica, Verdana, sans-serif;
   font-weight: 300;
   text-transform: uppercase;
   color: $color-fonte; }
@@ -901,7 +901,7 @@ footer {
   height: 25px;
   overflow: hidden;
   width: 50px;
-  background-image: url("../imagens/template/sprit_icons_hover.png");
+  background-image: url(../imagens/template/sprit_icons_hover.png);
   background-repeat: no-repeat;
   display: block;
   float: left;

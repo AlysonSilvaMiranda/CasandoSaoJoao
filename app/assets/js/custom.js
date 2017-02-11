@@ -2,6 +2,121 @@
 
 $(document).ready(function () {
 
+    //Inicio menu
+    function normalizeMenuAligment (menuItem) {
+        var $popup=$(menuItem).find(".popup");
+        if ($popup) {
+            var itemLeft = $(menuItem).position().left;
+            var pageOffset = $(".site").offset().left;
+            var pageWidth = $(".site").width();
+            var limite =  pageOffset + pageWidth;
+            var popupWidth = $popup.width();
+            var windWidth = $(window).width();
+            if(itemLeft + popupWidth > limite){
+                $popup.addClass('menucontent_right');
+            }
+            else {
+                $popup.removeClass('menucontent_right');
+            }
+        }
+    }
+    
+    function normalizeSubMenuAligment (menuItem) {
+        var $popup= $(menuItem).find(".sub_popup");
+        if ($popup) {
+            var itemLeft = $(menuItem).parent().parent().position().left;
+            var pageOffset = $(".site").offset().left;
+            var pageWidth = $(".site").width();
+            var limite =  pageOffset + pageWidth;
+            var popupWidth = $popup.width();
+            var windWidth = $(window).width();
+            if(itemLeft + popupWidth > limite){
+                $popup.addClass('sub_popup_right');
+            }
+            else {
+                $popup.removeClass('sub_popup_right');
+            }
+        }
+    }
+    
+    var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod|Android)/g) ? true : false );
+    var method;
+    if(iOS){
+
+
+
+       $('ul.menu > li > a[href="#"]').click( function(event){
+
+        normalizeMenuAligment($(this).closest("li"));
+        event.stopPropagation();
+        event.preventDefault();
+        
+        var $popup = $(this).closest("li").find(".popup");
+        var toggle = ($popup.css('display') != 'table') ? true : false;
+        $('.popup').hide();
+        
+        if(toggle){
+            $popup.css('opacity','0')
+            .css('display','table')
+            .animate({
+                opacity:1
+            },150);
+        }
+
+    });
+
+       $('.site').click( function(){
+           $('.popup').hide();
+           $('.sub_popup').hide();
+       });
+
+   }
+
+    else {
+        // Previne ancoras de ir para o top
+        $('ul.menu a[href="#"]').click( function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+
+        });
+        var timeOut;
+        $('ul.menu > li').hover( function(event){
+            var $popup=$(this).find(".popup");
+
+            event.stopPropagation();
+            event.preventDefault();
+            $('.popup').hide();
+
+            if(timeOut){
+                clearTimeout(timeOut);
+            }
+            normalizeMenuAligment(this);
+            timeOut = setTimeout((function() {
+                $popup.css('opacity','0').css('display','table').animate({
+                    opacity:1},150);
+            }), 200);
+        }, function(event){
+            var $popup=$(this).find(".popup");
+            $popup.css('display','table');
+            $popup.hide();
+            $popup.find('.sub_popup').hide();
+            clearTimeout(timeOut);
+        });
+
+    }
+    //fim Menu
+
+    wow = new WOW(
+    {
+    animateClass: 'animated',
+    offset: 100,
+    callback: function (box) {
+        console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+    }
+    });
+    wow.init();
+
     //  INICIO scripts menu   
     // TinyNav.js 1
     $('#nav').tinyNav({
@@ -41,42 +156,5 @@ $(document).ready(function () {
 
 });
 
-// Only for mobile devices
-function GetIEVersion() {
-    var sAgent = window.navigator.userAgent;
-    var Idx = sAgent.indexOf("MSIE");
 
-    // If IE, return version number.
-    if (Idx > 0)
-        return parseInt(sAgent.substring(Idx + 5, sAgent.indexOf(".", Idx)));
 
-    // If IE 11 then look for Updated user agent string.
-    else if (!!navigator.userAgent.match(/Trident\/7\./))
-        return 11;
-
-    else
-        return 0; //It is not IE
-}
-var ieVersion = GetIEVersion();
-var md = new MobileDetect(window.navigator.userAgent);
-if (ieVersion === 0 || ieVersion >= 10)
-{
-    $('head').append('<link href="assets/css/animate.css" rel="stylesheet">');
-    $.getScript("assets/js/wow.js", function () {
-        $(document).ready(function () {
-            wow = new WOW(
-                    {
-                        animateClass: 'animated',
-                        offset: 100,
-                        callback: function (box) {
-                            console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
-                        }
-                    });
-            wow.init();
-        });
-    });
-
-}
- 
-
- 
