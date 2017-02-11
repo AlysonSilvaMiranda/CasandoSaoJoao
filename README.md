@@ -21,56 +21,56 @@ npm install --save gulp-install
 ```
 
 ## Tarefas do Gulp
-Código:
+ **Código:** 
 ```shell
 gulp images 
 ```
 Otimiza todas as IMAGENS da pasta (app/assets/imagens) e move para a pasta de produção (dist/app/assets/imagens/). 
 
 
-Código:
+ **Código:** 
 ```shell
 gulp sass 
 ```
 Compila o arquivo scss para css.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp useref 
 ```
 Otimiza e Minifica os arquivos CSS e JS.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp images 
 ```
 Realiza a otimização das imagens e move para produção.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp browserSync 
 ```
 Inicia um servidor para o projeto.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp fonts 
 ```
 Copia a pasta fonts para produção.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp watch 
 ```
 Abre o navegador e mantém a sincronização com o código em tempo real.
 
 
-Código:
+ **Código:** 
 ```shell
 gulp build 
 ```
