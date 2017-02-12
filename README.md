@@ -14,10 +14,14 @@ gulp build
 
 ### Instalação
 
-Instalar o `gulp-install` e suas dependências:
+Instalar o `gulp-install` e suas dependências na pasta do projeto:
 
 ```shell
-npm install --save gulp-install
+npm install --save gulp-install 
+```
+
+```shell
+npm install --save  
 ```
 
 ## Tarefas do Gulp

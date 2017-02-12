@@ -47,9 +47,11 @@ gulp.task('useref', function(){
     presets: ['es2015']
   }))) 
   .pipe(useref()) 
-    // Minifica  arquivos css
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('./dist/app'))
+  // Minifica  arquivos css
+  .pipe(gulpIf('*.css', cssnano({
+    discardComments: {removeAll: true}
+  })))
+  .pipe(gulp.dest('./dist/app'))
   });
 
 //Copiar fonts
